@@ -1,0 +1,54 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'diagonalDifference' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts 2D_INTEGER_ARRAY arr as parameter.
+#
+
+def diagonalDifference(arr):
+    # Write your code here
+    #Initialize the sum of diagonals to be zero
+    pri_sum = 0
+    sec_sum = 0
+    
+    # Check on how many elements per row
+    arr_len = calc_len(arr[0])
+    
+    # Iterate thru matrix to total up the 2 diagonal values by row
+    for i in range(arr_len):
+        pri_sum += arr[i][i]
+        sec_sum += arr[i][arr_len - i - 1]
+    
+    # Return absolute difference between the sums of the two diagonal values
+    return(abs(pri_sum - sec_sum))
+    
+# Function to check for no of elements in array    
+def calc_len(arr):
+    arr_cnt = 0
+    for i in arr:
+        arr_cnt += 1
+    return(arr_cnt)
+
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    n = int(input().strip())
+
+    arr = []
+
+    for _ in range(n):
+        arr.append(list(map(int, input().rstrip().split())))
+
+    result = diagonalDifference(arr)
+
+    fptr.write(str(result) + '\n')
+
+    fptr.close()
