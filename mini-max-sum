@@ -1,0 +1,47 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'miniMaxSum' function below.
+#
+# The function accepts INTEGER_ARRAY arr as parameter.
+#
+
+def miniMaxSum(arr):
+    # Write your code here
+    # Initialize maximum value, minimum value, and total sum to first element of array
+    min_val = int(arr[0])
+    max_val = int(arr[0])
+    total_sum = int(arr[0])
+    
+    # Iterate thru array for check on every element
+    for i in range(0, calc_len(arr) - 1):
+        # if the i + 1 in array is larger than i, replace maximum value
+        if max_val < arr[i + 1]:
+            max_val = arr[i + 1]
+        # if the i + 1 in array is lesser than i, replace minimum value
+        elif min_val > arr[i + 1]:
+            min_val = arr[i + 1]
+        # Add to total sum of all elements while iterating
+        total_sum += arr[i + 1]
+        
+    # Print answer, minimum sum = grand total - maximum value. maximum sum = grand total - minumum value
+    print(total_sum - max_val, total_sum - min_val)
+ 
+# Function to check for no of elements in array     
+def calc_len(arr):
+    cnt = 0
+    for i in arr:
+        cnt += 1
+    return (cnt)
+
+if __name__ == '__main__':
+
+    arr = list(map(int, input().rstrip().split()))
+
+    miniMaxSum(arr)
