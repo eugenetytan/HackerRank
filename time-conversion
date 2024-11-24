@@ -22,16 +22,16 @@ def timeConversion(s):
     # Initialize result as original str without AM/PM
     res = s[:-2]
     
-    if (is_pm):
+    if(is_pm):
         # if PM, we will only need to add 12 to hh other than 12PM itself
         if not(is_twelve):
             res = (str(int(s[:2]) + 12) + res[2:])
     else:
         # if AM, we will only need to look out for 12AM and change hh to 00
-        if (is_twelve):
+        if(is_twelve):
             res = ("00" + res[2:])
 
-    return (res)
+    return(res)
         
     
 if __name__ == '__main__':
