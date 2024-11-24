@@ -38,7 +38,7 @@ def calc_len(arr):
     cnt = 0
     for i in arr:
         cnt += 1
-    return (cnt)
+    return(cnt)
 
 if __name__ == '__main__':
 
