@@ -1,0 +1,46 @@
+#!/bin/python3
+
+import math
+import os
+import random
+import re
+import sys
+
+#
+# Complete the 'timeConversion' function below.
+#
+# The function is expected to return a STRING.
+# The function accepts STRING s as parameter.
+#
+
+def timeConversion(s):
+    # Write your code here
+    # Bool check for clock at 12, and if it's PM
+    is_twelve = (s[:2] == "12")
+    is_pm = (s[-2:] == "PM")
+    
+    # Initialize result as original str without AM/PM
+    res = s[:-2]
+    
+    if (is_pm):
+        # if PM, we will only need to add 12 to hh other than 12PM itself
+        if not(is_twelve):
+            res = (str(int(s[:2]) + 12) + res[2:])
+    else:
+        # if AM, we will only need to look out for 12AM and change hh to 00
+        if (is_twelve):
+            res = ("00" + res[2:])
+
+    return (res)
+        
+    
+if __name__ == '__main__':
+    fptr = open(os.environ['OUTPUT_PATH'], 'w')
+
+    s = input()
+
+    result = timeConversion(s)
+
+    fptr.write(result + '\n')
+
+    fptr.close()
