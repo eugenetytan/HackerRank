@@ -41,7 +41,7 @@ def calc_len(arr):
     arr_cnt = 0
     for i in arr:
         arr_cnt += 1
-    return (arr_cnt)
+    return(arr_cnt)
 
 if __name__ == '__main__':
     n = int(input().strip())
